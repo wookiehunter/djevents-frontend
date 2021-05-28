@@ -37,7 +37,7 @@ export default function AddEventPage({ token }) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     })
@@ -145,12 +145,12 @@ export default function AddEventPage({ token }) {
   )
 }
 
-// export async function getServerSideProps({ req }) {
-//   const { token } = parseCookies(req)
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req)
 
-//   return {
-//     props: {
-//       token,
-//     },
-//   }
-// }
+  return {
+    props: {
+      token,
+    },
+  }
+}

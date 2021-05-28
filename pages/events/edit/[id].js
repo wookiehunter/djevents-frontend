@@ -46,7 +46,7 @@ export default function EditEventPage({ evt, token }) {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
-				// Authorization: `Bearer ${token}`,
+				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify(values),
 		});
@@ -188,7 +188,7 @@ export default function EditEventPage({ evt, token }) {
 }
 
 export async function getServerSideProps({ params: { id }, req }) {
-	// const { token } = parseCookies(req)
+	const { token } = parseCookies(req)
 
 	const res = await fetch(`${API_URL}/events/${id}`);
 	const evt = await res.json();
@@ -197,7 +197,7 @@ export async function getServerSideProps({ params: { id }, req }) {
 	return {
 		props: {
 			evt,
-			// token,
+			token,
 		},
 	};
 }
